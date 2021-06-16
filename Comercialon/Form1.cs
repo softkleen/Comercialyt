@@ -21,9 +21,10 @@ namespace Comercialon
         private void Form1_Load(object sender, EventArgs e)
         {
             var lista = Cliente.ListarTodos();
-            Cliente c = new Cliente();
-            c.Id = 0;
+            Cliente cliente = new Cliente("Zé","123","@sze","456",true);
            
+            cliente.Endereco = new Endereco();
+            cliente.Endereco.Logradouro = "Av Itaquera";
         }
     }
 }
