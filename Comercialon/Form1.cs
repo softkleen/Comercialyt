@@ -21,7 +21,8 @@ namespace Comercialon
         private void Form1_Load(object sender, EventArgs e)
         {
             var lista = Cliente.ListarTodos();
-            Cliente c = new Cliente(125, "Well");
+            Cliente c = new Cliente();
+            c.Id = 0;
            
         }
     }

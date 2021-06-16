@@ -6,22 +6,16 @@ namespace Comercialon.Classes
 {
     public class Cliente
     {
-        //declaração de atributo
+        //declaração de propriedades
         public int Id { get; set; }
         public string Nome { get; set; }
+        public string Cpf { get; set; }
+        public string Email { get; set; }
+        public string Telefone { get; set; }
+
         // métodos construtores
-        public Cliente()
-        {
-        }
-        public Cliente(int id, string nome)
-        {
-            Id = id;
-            Nome = nome;
-        }
-        public Cliente(string nome)
-        {
-            Nome = nome;
-        }
+        public Cliente(){ Id = 0; }
+        
         // métodos da classe
         public void Inserir() 
         { }
