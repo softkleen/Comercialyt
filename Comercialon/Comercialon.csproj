@@ -92,5 +92,8 @@
   <ItemGroup>
     <Folder Include="Formularios\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="script_mysql_comercialondb.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
