@@ -48,15 +48,17 @@ namespace Comercialon.Classes
         public void Inserir() 
         {
             var cmd = Banco.Abrir();
-            //inserir usando concatenações
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "insert clientes " +
-                "(nome, cpf, email, telefone, ativo) " +
-                "values('"+Nome+"', '"+Cpf+"', '"+Email+"', '"+Telefone+"', default); ";
-            cmd.ExecuteNonQuery();//
-            cmd.CommandText = "select @@identity";
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
-
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                //inserir usando concatenações
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = "insert clientes " +
+                    "(nome, cpf, email, telefone, ativo) " +
+                    "values('" + Nome + "', '" + Cpf + "', '" + Email + "', '" + Telefone + "', default); ";
+                cmd.ExecuteNonQuery();//
+                cmd.CommandText = "select @@identity";
+                Id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
         }
         public bool Alterar(int id) 
         {

@@ -33,6 +33,24 @@ namespace Comercialon.Classes
             Estado = estado;
             SiglaEstado = siglaEstado;
         }
+        public void Inserir(int idCliente) 
+        {
+            string query = "insert enderecos values(" +
+                idCliente+", " +
+                "'"+Cep+"', " +
+                "'"+Logradouro+"'," +
+                "'"+Numero+"', " +
+                "'"+Complemento+"'," +
+                "'"+Bairro+"', " +
+                "'"+Cidade+"'," +
+                "'"+Estado+"'," +
+                "'"+SiglaEstado+"'," +
+                "'"+Tipo+"')";
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = query;
+            cmd.ExecuteNonQuery();
+        }
         public static List<Endereco> ListaEnderecos(int id=0, int limit = 0)
         {
             List<Endereco> lista = new List<Endereco>();
