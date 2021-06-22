@@ -62,5 +62,16 @@ namespace Comercialon
             }
         }
 
+        private void txtCep_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCep.Text.Length==8)
+            {
+                var cep = Cep.Obter(txtCep.Text);
+                txtBairro.Text = cep.Bairro;
+                txtCidade.Text = cep.Localidade;
+                txtLogradouro.Text = cep.Logradouro;
+                txtUf.Text = cep.Uf;
+            }
+        }
     }
 }
