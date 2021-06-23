@@ -73,5 +73,17 @@ namespace Comercialon
                 txtUf.Text = cep.Uf;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var listaCli = Cliente.ListarTodos();
+
+            var listaEnd = Endereco.ListaEnderecos(int.Parse(txtID.Text), 0, 10);
+            foreach (var item in listaEnd)
+            {
+                listBox1.Items.Add(item.IdCliente + " " + item.Logradouro);
+            }
+            
+        }
     }
 }
