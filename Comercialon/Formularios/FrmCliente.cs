@@ -76,6 +76,8 @@ namespace Comercialon
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Cliente cliente = new Cliente();
+            cliente.BuscarPorId(8);
             var listaCli = Cliente.ListarTodos();
 
             var listaEnd = Endereco.ListaEnderecos(int.Parse(txtID.Text), 0, 10);
