@@ -49,6 +49,7 @@ namespace Comercialon.Classes
             Estado = estado;
             SiglaEstado = siglaEstado;
         }
+      
         public void Inserir(int idCliente) 
         {
             string query = "insert enderecos values(" +
@@ -78,30 +79,34 @@ namespace Comercialon.Classes
         {
             List<Endereco> lista = new List<Endereco>();
             string query = "";
-            if (id > 0)
+            if (id>0)
             {
-                query = "select * from enderecos where Clientes_id = " + id;
+                query = "select * from enderecos where Clientes_id = "+ id;
             }
-            else if (limit >= 0 && inicial >=0)
+            else if (limit > 0 && inicial >=0)
             {
-                query = "select * from enderecos limit " + inicial + "," + limit;
+                query = "select * from enderecos limit "+inicial+","+limit;
             }
-            var cmd = Banco.Abrir(); 
+            else 
+            {
+                query = "select * from enderecos";
+            }
+            var cmd = Banco.Abrir();
             cmd.CommandText = query;
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 lista.Add(new Endereco(
-                    dr.GetInt32(0),
-                    dr.GetString(2),
-                    dr.GetString(3),
-                    dr.GetString(4),
-                    dr.GetString(1),
-                    dr.GetString(5),
-                    dr.GetString(6),
-                    dr.GetString(7),
-                    dr.GetString(8),
-                    dr.GetString(9)
+                    dr.GetInt32("Clientes_id"),
+                    dr.GetString("logradouro"),
+                    dr.GetString("numero"),
+                    dr.GetString("complemento"),
+                    dr.GetString("cep"),
+                    dr.GetString("bairro"),
+                    dr.GetString("cidade"),
+                    dr.GetString("estado"),
+                    dr.GetString("sigla_estado"),
+                    dr.GetString("tipo")
                     ));
             }
             return lista;
